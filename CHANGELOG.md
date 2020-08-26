@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/compare/v1.1.0...v1.1.1) (2020-08-26)
+
+
+### Bug Fixes
+
+* german translations and helper not found ([7f83657](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/commit/7f836570e6412da8817815b078c2f204405a3a5f))
+
 ## 1.1.0 (2020-08-26)
 
 

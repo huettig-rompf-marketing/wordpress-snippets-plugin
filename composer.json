@@ -1,0 +1,21 @@
+{
+    "name": "huettig-rompf-marketing/wordpress-snippets-plugin",
+    "description": "This plugin helps you settings up customized Hüttig & Rompf Marketing Snippets.",
+    "type": "wordpress-plugin",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Huettig & Rompf",
+            "email": "marketing@huettig-rompf.de",
+            "homepage": "https://www.huettig-rompf.de",
+            "role": "Company"
+        },
+        {
+            "name": "LABOR.digital",
+            "email": "info@labor.tools",
+            "homepage": "https://www.labor.digital",
+            "role": "Company"
+        }
+    ],
+    "version": "1.0.0"
+}

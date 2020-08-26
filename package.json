@@ -1,0 +1,24 @@
+{
+	"name": "@huettig-rompf-marketing/wordpress-snippets-plugin",
+	"author": "Hüttig & Rompf",
+	"version": "1.0.0",
+	"description": "This plugin helps you settings up customized Hüttig & Rompf Marketing Snippets.",
+	"main": "index.js",
+	"scripts": {
+		"build": "labor-asset-building build",
+		"watch": "labor-asset-building watch",
+		"analyze": "labor-asset-building analyze"
+	},
+	"devDependencies": {
+		"@labor-digital/asset-building": "*"
+	},
+	"labor": {
+		"apps": [
+        {
+            "entry": "./assets/admin.js",
+            "output": "./assets/bundle/admin.js"
+        }
+    ]
+	},
+	"license": "Apache-2.0"
+}

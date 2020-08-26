@@ -1,0 +1,49 @@
+/*!
+ / Copyright 2020 LABOR.digital
+ /
+ / Licensed under the Apache License, Version 2.0 (the "License");
+ / you may not use this file except in compliance with the License.
+ / You may obtain a copy of the License at
+ /
+ /     http://www.apache.org/licenses/LICENSE-2.0
+ /
+ / Unless required by applicable law or agreed to in writing, software
+ / distributed under the License is distributed on an "AS IS" BASIS,
+ / WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ / See the License for the specific language governing permissions and
+ / limitations under the License.
+ /
+ / Last modified: 2020.08.24 at 19:19
+ /
+@import "variables"
+
+#wpcontent
+  background-color: white
+
+.hur_management
+  font-size: 16px
+
+  p
+    font-size: 16px
+    line-height: 24px
+
+  form
+    width: 100%
+
+    @include media-breakpoint-up(sm)
+      width: 400px
+
+.hur_form-group
+  margin-bottom: 10px
+
+  label
+    display: block
+
+  input, select, textarea
+    margin-top: 5px
+    width: 100%
+
+.hur_form-error
+  font-size: 14px
+  line-height: 18px
+  color: crimson

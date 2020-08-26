@@ -1,14 +1,98 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-08-26 10:23+0200\n"
-"PO-Revision-Date: 2020-08-26 10:24+0200\n"
+"POT-Creation-Date: 2020-08-26 10:25+0200\n"
+"PO-Revision-Date: 2020-08-26 11:53+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.4.1\n"
-"X-Poedit-Basepath: .\n"
+"X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: de_DE\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+
+#: src/Admin/Admin.php:43 src/Admin/Admin.php:44
+msgid "Hütting & Rompf Snippets"
+msgstr "Hütting & Rompf Snippets"
+
+#: src/Admin/Admin.php:55 src/Admin/Admin.php:56
+msgid "Hütting & Rompf Snippet Settings"
+msgstr "Hüttig & Rompf Snippet Einstellungen"
+
+#: src/Admin/Controllers/NetworkSettingsController.php:56
+#: src/Admin/Controllers/SiteSettingsController.php:85
+msgid "Proxy must be a valid URL."
+msgstr "Die Proxy URL is keine valide URL."
+
+#: src/Admin/Controllers/SiteSettingsController.php:69
+msgid "Snippet Type is unknown."
+msgstr "Der Snippet Typ ist unbekannt."
+
+#: src/Admin/Controllers/SiteSettingsController.php:73
+msgid "Primary color is not a valid color."
+msgstr "Die Primärfarbe ist keine valide Farbe."
+
+#: src/Admin/Controllers/SiteSettingsController.php:77
+msgid "Secondary color is not a valid color."
+msgstr "Die Sekundärfarbe ist keine valide Farbe."
+
+#: src/Admin/Controllers/SiteSettingsController.php:81
+msgid "Configuration is not a valid JSON."
+msgstr "Die Konfiguration enthält kein valides JSON."
+
+#: src/Helper.php:10
+msgid "Credit calculator"
+msgstr "Kreditrechner"
+
+#: src/Helper.php:11
+msgid "Variant S"
+msgstr "Variante S"
+
+#: src/Helper.php:12
+msgid "Variant M"
+msgstr "Variante M"
+
+#: src/Helper.php:13
+msgid "Variant L"
+msgstr "Variante L"
+
+#: src/Helper.php:14
+msgid "Construction financing FAQ"
+msgstr "Baufinanzierung-FAQ"
+
+#: templates/network-settings.php:2 templates/site-settings.php:2
+msgid "Hüttig & Rompf Snippets - Settings"
+msgstr "Hüttig & Rompf Snippets - Einstellungen"
+
+#: templates/network-settings.php:5 templates/site-settings.php:40
+msgid "Proxy URL"
+msgstr "Proxy URL"
+
+#: templates/network-settings.php:12 templates/site-settings.php:48
+msgid "Save"
+msgstr "Speichern"
+
+#: templates/site-settings.php:3
+msgid "Change your default settings for the Hütting & Rompf Marketing Snippets."
+msgstr "Ändere die Standardeinstellungen für die Hüttig & Rompf Marketing Snippets."
+
+#: templates/site-settings.php:6
+msgid "Snippet Type"
+msgstr "Snippet Typ"
+
+#: templates/site-settings.php:17
+msgid "Primary Color"
+msgstr "Primärfarbe"
+
+#: templates/site-settings.php:24
+msgid "Secondary Color"
+msgstr "Sekundärfarbe"
+
+#: templates/site-settings.php:31
+msgid "Customize Configuration"
+msgstr "Eigene Konfiguration"

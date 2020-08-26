@@ -2,6 +2,8 @@
 
 namespace HuR\Snippets\Admin\Controllers;
 
+use HuR\Snippets\Helper;
+
 class NetworkSettingsController extends AbstractController
 {
     protected $template = 'network-settings.php';
@@ -34,7 +36,7 @@ class NetworkSettingsController extends AbstractController
         $errors = $this->validate($post);
 
         if (empty($errors)) {
-            update_network_option(null, $this->optionKey, HUR_Helper::removeEmpty($post));
+            update_network_option(null, $this->optionKey, Helper::removeEmpty($post));
 
             $this->render($post);
             return;

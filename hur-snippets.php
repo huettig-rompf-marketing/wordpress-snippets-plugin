@@ -3,7 +3,7 @@
  * Plugin Name: Hütting & Rompf Marketing Snippets
  * Domain Path: /translations
  * Description: This plugin helps you settings up customized Hüttig & Rompf Marketing Snippets.
- * Version: 1.0
+ * Version: 1.1.0
  * Requires at least: 5.4
  * Requires PHP: 7.2
  * Author: Hüttig & Rompf

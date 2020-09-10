@@ -23,7 +23,7 @@ class SiteSettingsController extends AbstractController
     public function view()
     {
         $settings = get_option($this->optionKey, []);
-
+        $settings['network'] = get_site_option('hur_snippets_network_settings', []);
         $this->render($settings);
     }
 
@@ -38,6 +38,8 @@ class SiteSettingsController extends AbstractController
         ];
 
         $errors = $this->validate($post);
+
+        $post['network'] = get_site_option('hur_snippets_network_settings', []);
 
         if (empty($errors)) {
             update_option($this->optionKey, Helper::removeEmpty($post));

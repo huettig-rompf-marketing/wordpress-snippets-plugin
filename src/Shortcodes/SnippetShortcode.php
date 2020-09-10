@@ -4,24 +4,49 @@ namespace HuR\Snippets\Shortcodes;
 
 class SnippetShortcode
 {
+    protected static $javascriptWasIncluded = false;
     public function __invoke($atts, $content)
     {
         $networkSettings = get_site_option('hur_snippets_network_settings', []);
         $siteSettings = get_option('hur_snippets_settings', []);
-        $localSettings = json_decode($content, true) ?? [];
 
-        $settings = array_merge(
-            $networkSettings,
-            $siteSettings,
-            json_decode($siteSettings['configuration'] ?? '[]', true) ?? [],
-            $localSettings
-        );
+        $siteSettings['configuration'] = json_decode($siteSettings['configuration'] ?? '[]', true) ?? [];
+        $settings = $this->mergeRecursive($networkSettings, $siteSettings);
 
-        $proxyUrl = $settings['proxyUrl'];
-        unset($settings['proxyUrl'], $settings['configuration']);
+        $snippetSettings = $this->mergeRecursive($siteSettings['configuration'], @json_decode($content, true) ?? []);
 
-        $url = !empty($proxyUrl) ? rtrim($proxyUrl, '/') : 'https://webhub.huettig-rompf.de';
+        $result = '';
+        if(!static::$javascriptWasIncluded){
+            static::$javascriptWasIncluded = true;
+            $url = !empty($settings['proxyUrl']) ? rtrim($settings['proxyUrl'], '/') : 'https://webhub.huettig-rompf.de';
+            $result.= '<script type="text/javascript" src="' . $url . '/js/snippet"></script>';
+        }
 
-        return '<script type="text/javascript" src="' . $url . '/js/snippet"></script><script type="application/json" data-huettig-und-rompf-snippet>' . json_encode($settings) . '</script>';
+        $result .= '<div class="alignwide">' .
+                       '<script type="application/json" data-huettig-und-rompf-snippet>' .
+                            json_encode($snippetSettings) .
+                       '</script>' .
+                   '</div>';
+
+        return $result;
+    }
+
+    /**
+     * Internal helper to recursively merge the configurations with overrides
+     * @param   array  $a
+     * @param   array  $b
+     *
+     * @return array
+     */
+    protected function mergeRecursive(array $a, array $b): array{
+        $c = $a;
+        foreach ($b as $k => $v){
+            if(is_array($v) && isset($a[$k]) && is_array($a[$k])){
+                $c[$k] = $this->mergeRecursive($a[$k], $v);
+            } else {
+                $c[$k] = $v;
+            }
+        }
+        return $c;
     }
 }

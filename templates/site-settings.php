@@ -29,7 +29,7 @@
         </div>
         <div class="hur_form-group">
             <label><?= __('Customize Configuration', 'hur-snippets') ?></label>
-            <textarea name="configuration"><?= $data['configuration'] ?? null ?></textarea>
+            <textarea name="configuration" rows="6"><?= $data['configuration'] ?? null ?></textarea>
             <?php if(isset($data['errors']['configuration'])): ?>
                 <span class="hur_form-error"><?= $data['errors']['configuration'] ?></span>
             <?php endif; ?>
@@ -38,7 +38,7 @@
         <div class="hur_form-advanced">
             <div class="hur_form-group">
                 <label><?= __('Proxy URL', 'hur-snippets') ?> <small>(<a href="https://github.com/huettig-rompf-marketing/webhub-proxy" target="_blank" rel="noopener">GitHub</a>)</small></label>
-                <input name="proxyUrl" type="url" value="<?= $data['proxyUrl'] ?? null ?>">
+                <input name="proxyUrl" type="url" value="<?= $data['proxyUrl'] ?? null ?>" placeholder="<?= $data['network']['proxyUrl'] ?? null ?>">
                 <?php if(isset($data['errors']['proxyUrl'])): ?>
                     <span class="hur_form-error"><?= $data['errors']['proxyUrl'] ?></span>
                 <?php endif; ?>

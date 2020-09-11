@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-08-26 10:25+0200\n"
-"PO-Revision-Date: 2020-08-26 11:53+0200\n"
+"POT-Creation-Date: 2020-09-11 07:56+0200\n"
+"PO-Revision-Date: 2020-09-11 07:56+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -16,15 +16,12 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
 
-#: src/Admin/Admin.php:43 src/Admin/Admin.php:44
-msgid "Hütting & Rompf Snippets"
-msgstr "Hütting & Rompf Snippets"
-
-#: src/Admin/Admin.php:55 src/Admin/Admin.php:56
+#: src/Admin/Admin.php:43 src/Admin/Admin.php:44 src/Admin/Admin.php:55
+#: src/Admin/Admin.php:56
 msgid "Hütting & Rompf Snippet Settings"
 msgstr "Hüttig & Rompf Snippet Einstellungen"
 
-#: src/Admin/Controllers/NetworkSettingsController.php:56
+#: src/Admin/Controllers/NetworkSettingsController.php:58
 #: src/Admin/Controllers/SiteSettingsController.php:85
 msgid "Proxy must be a valid URL."
 msgstr "Die Proxy URL is keine valide URL."
@@ -96,3 +93,10 @@ msgstr "Sekundärfarbe"
 #: templates/site-settings.php:31
 msgid "Customize Configuration"
 msgstr "Eigene Konfiguration"
+
+#: templates/site-settings.php:37
+msgid "Advanced"
+msgstr "Erweitert"
+
+#~ msgid "Hütting & Rompf Snippets"
+#~ msgstr "Hütting & Rompf Snippets"

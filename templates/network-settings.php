@@ -9,7 +9,7 @@
             <?php endif; ?>
         </div>
         <div class="hur_form-group">
-            <button type="submit" name="save" class="button button-primary"><?= __('Save') ?></button>
+            <button type="submit" name="save" class="button button-primary"><?= __('Save', 'hur-snippets') ?></button>
         </div>
     </form>
 </div>

@@ -40,8 +40,8 @@ class Admin
     {
         add_submenu_page(
             'options-general.php',
-            __('Hütting & Rompf Snippets', 'hur-snippets'),
-            __('Hütting & Rompf Snippets', 'hur-snippets'),
+            __('Hütting & Rompf Snippet Settings', 'hur-snippets'),
+            __('Hütting & Rompf Snippet Settings', 'hur-snippets'),
             'manage_options',
             'huetting-rompf-snippet-settings',
             new SiteSettingsController()

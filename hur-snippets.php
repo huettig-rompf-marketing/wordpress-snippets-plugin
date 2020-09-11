@@ -1,6 +1,7 @@
 <?php
 /**
  * Plugin Name: Hütting & Rompf Marketing Snippets
+ * Text Domain: hur-snippets
  * Domain Path: /translations
  * Description: This plugin helps you settings up customized Hüttig & Rompf Marketing Snippets.
  * Version: 1.1.0
@@ -22,3 +23,8 @@ function main()
     $plugin->initialize();
 }
 main();
+
+//function my_plugin_load_plugin_textdomain() {
+//    load_plugin_textdomain( 'hur-snippets', FALSE, basename( dirname( __FILE__ ) ) . '/translations/' );
+//}
+//add_action( 'plugins_loaded', 'my_plugin_load_plugin_textdomain' );

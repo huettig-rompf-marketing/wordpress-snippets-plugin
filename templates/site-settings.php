@@ -34,7 +34,7 @@
                 <span class="hur_form-error"><?= $data['errors']['configuration'] ?></span>
             <?php endif; ?>
         </div>
-        <h2 data-hide="hur_form-advanced">Advanced</h2>
+        <h2 data-hide="hur_form-advanced"><?= __('Advanced', 'hur-snippets') ?></h2>
         <div class="hur_form-advanced">
             <div class="hur_form-group">
                 <label><?= __('Proxy URL', 'hur-snippets') ?> <small>(<a href="https://github.com/huettig-rompf-marketing/webhub-proxy" target="_blank" rel="noopener">GitHub</a>)</small></label>
@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="hur_form-group">
-            <button type="submit" name="save" class="button button-primary"><?= __('Save') ?></button>
+            <button type="submit" name="save" class="button button-primary"><?= __('Save', 'hur-snippets') ?></button>
         </div>
     </form>
 </div>

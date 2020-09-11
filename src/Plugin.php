@@ -27,7 +27,6 @@ class Plugin
         define('HUR_SNIPPETS_ASSETS_URL', HUR_SNIPPETS_PLUGIN_URL . '/assets');
         define('HUR_SNIPPETS_SRC_DIR', HUR_SNIPPETS_PLUGIN_DIR . '/src');
         define('HUR_SNIPPETS_TEMPLATE_DIR', HUR_SNIPPETS_PLUGIN_DIR . '/templates');
-        define('HUR_SNIPPETS_TRANSLATION_DIR', HUR_SNIPPETS_PLUGIN_DIR . '/translations');
     }
 
     protected function registerAutoloader()
@@ -41,7 +40,7 @@ class Plugin
     protected function registerTextdomain()
     {
         add_action('plugins_loaded', function () {
-            load_plugin_textdomain('hur-snippets', false, HUR_SNIPPETS_TRANSLATION_DIR);
+            load_plugin_textdomain('hur-snippets', false, 'hur-snippets/translations');
         });
     }
 }

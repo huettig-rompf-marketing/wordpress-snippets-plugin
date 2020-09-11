@@ -23,8 +23,3 @@ function main()
     $plugin->initialize();
 }
 main();
-
-//function my_plugin_load_plugin_textdomain() {
-//    load_plugin_textdomain( 'hur-snippets', FALSE, basename( dirname( __FILE__ ) ) . '/translations/' );
-//}
-//add_action( 'plugins_loaded', 'my_plugin_load_plugin_textdomain' );

@@ -12,8 +12,10 @@ class Plugin
         $this->registerAutoloader();
         $this->registerTextdomain();
 
-        $admin = new Admin();
-        $admin->initialize();
+        if(is_user_logged_in()){
+            $admin = new Admin();
+            $admin->initialize();
+        }
 
         $shortcodes = new Shortcodes();
         $shortcodes->register();

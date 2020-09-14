@@ -15,11 +15,9 @@
 
 use HuR\Snippets\Plugin;
 
-function main()
-{
+add_action('init', static function(){
     require_once __DIR__ . '/src/Plugin.php';
 
     $plugin = new Plugin();
     $plugin->initialize();
-}
-main();
+});

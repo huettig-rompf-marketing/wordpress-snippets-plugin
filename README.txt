@@ -33,9 +33,9 @@ user you can also provide your own proxy url for the snippets. If you are unsure
 will work out of the box.
 
 After configure your default snippet you can use it with the following shortcode `[hur-snippet]`. If you want to overwrite
-the defaults you can provide custom JSON inside the content: `[hur-snippet]{"primaryColor": "#123456"}[/hur-snippet]`.
-This will overwrite the `primaryColor` set inside your snippet settings. You can also provide additional data, which will
-be append to the snippet: `[hur-snippet]{"additionalData": ["awesome", "things"]}[/hur-snippet]`.
+the defaults you can provide custom JSON inside the content: `[hur-snippet]{"calculatorPreset": {"zip": 60503}}[/hur-snippet]`.
+This will overwrite the `property zip` set inside your snippet settings.
+You can do that as well using an attribute: `[hur-snippet property-zip="60503"]`, however the JSON configuration always takes precedence.
 
 == Installation ==
 

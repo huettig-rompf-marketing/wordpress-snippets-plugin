@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/compare/v1.1.3...v1.2.0) (2020-09-15)
+
+
+### Features
+
+* finish up basic implementation ([88a8b09](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/commit/88a8b09fd2ea4d98e59aa4990b25d7a5beddf00b))
+* improve snippet config generation ([344f7cf](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/commit/344f7cfe7991adb0fb651e0d55eb3aa296899067))
+* set proxy url from a network configuration on the site configuration ([ce19670](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/commit/ce19670e35b816c62a33dc5d6bd45133147c92a6))
+* set proxy url from a network configuration on the site configuration ([46bd3d3](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/commit/46bd3d32d48ec61b5253adbb5d22797d4634836a))
+
+
+### Bug Fixes
+
+* initialize plugin at the "init" event ([058de0b](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/commit/058de0bc6ea8203f68dabe0573e214faed841786))
+* only initialize the admin code if a user is logged in ([f38dcaf](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/commit/f38dcaf67fc8bb342af36afb4d9858b46191ddbb))
+* register textdomain correctly ([13cffff](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/commit/13cffff889351118d22e09ca57acdffc3bfa4f14))
+
 ### [1.1.3](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/compare/v1.1.2...v1.1.3) (2020-09-11)
 
 ### [1.1.2](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/compare/v1.1.1...v1.1.2) (2020-09-11)

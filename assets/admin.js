@@ -17,3 +17,29 @@
  */
 
 import "./css/admin.sass"
+
+const $ = window.jQuery;
+
+/**
+ * Toggles the fields in the site settings module
+ */
+$(function(){
+
+    const $selectBox = $('select[name=snippetType]');
+
+    function calculateFieldVisibility() {
+        const $defaultFields = $('.fieldToggle.fieldToggle--default');
+        const val = $selectBox.val();
+
+        $defaultFields.hide();
+
+        if(val === 'calcAnnuityWhiteLabel'){
+            $defaultFields.show();
+        }
+    }
+
+    $selectBox.bind('change', function(){
+        calculateFieldVisibility();
+    });
+    calculateFieldVisibility();
+});

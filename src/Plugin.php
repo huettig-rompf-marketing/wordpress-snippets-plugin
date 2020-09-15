@@ -8,7 +8,6 @@ class Plugin
 {
     public function initialize(): void
     {
-        $this->constants();
         $this->registerAutoloader();
         $this->registerTextdomain();
 
@@ -21,15 +20,10 @@ class Plugin
         $shortcodes->register();
     }
 
-    protected function constants(): void
+    public function registerTextdomain(): void
     {
-        define('HUR_SNIPPETS_PLUGIN_DIR', dirname(plugin_dir_path(__FILE__)));
-        define('HUR_SNIPPETS_PLUGIN_URL', rtrim(plugin_dir_url(HUR_SNIPPETS_PLUGIN_DIR . '/hur-snippets.php'), '/'));
-        define('HUR_SNIPPETS_ASSETS_DIR', HUR_SNIPPETS_PLUGIN_DIR . '/assets');
-        define('HUR_SNIPPETS_ASSETS_URL', HUR_SNIPPETS_PLUGIN_URL . '/assets');
-        define('HUR_SNIPPETS_SRC_DIR', HUR_SNIPPETS_PLUGIN_DIR . '/src');
-        define('HUR_SNIPPETS_TEMPLATE_DIR', HUR_SNIPPETS_PLUGIN_DIR . '/templates');
-        define('HUR_SNIPPETS_TRANSLATION_DIR', HUR_SNIPPETS_PLUGIN_DIR . '/translations');
+        $relPath = str_replace(dirname(HUR_SNIPPETS_PLUGIN_DIR), '', HUR_SNIPPETS_TRANSLATION_DIR);
+        load_plugin_textdomain('hur-snippets', false, $relPath);
     }
 
     protected function registerAutoloader(): void
@@ -38,13 +32,5 @@ class Plugin
 
         $autoloader = new Autoloader();
         $autoloader->register('HuR\\Snippets\\', HUR_SNIPPETS_SRC_DIR);
-    }
-
-    protected function registerTextdomain(): void
-    {
-        add_action('plugins_loaded', function () {
-            $relPath = str_replace(dirname(HUR_SNIPPETS_PLUGIN_DIR), '', HUR_SNIPPETS_TRANSLATION_DIR);
-            load_plugin_textdomain('hur-snippets', false, $relPath);
-        });
     }
 }

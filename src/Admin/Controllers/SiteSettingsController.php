@@ -29,17 +29,26 @@ class SiteSettingsController extends AbstractController
 
     public function save()
     {
+        $networkSettings = get_site_option('hur_snippets_network_settings', []);
+
         $post = [
             'snippetType' => $_POST['snippetType'] ?? null,
-            'primaryColor' => $_POST['primaryColor'] ?? null,
-            'secondaryColor' => $_POST['secondaryColor'] ?? null,
-            'configuration' => strip_tags(stripslashes_deep($_POST['configuration'] ?? null)),
             'proxyUrl' => $_POST['proxyUrl'] ?? null,
+            'configuration' => $_POST['configuration'] ?? null
         ];
 
-        $errors = $this->validate($post);
+        $fields = [];
+        if ($post['snippetType'] === 'calcAnnuityWhiteLabel') {
+            $fields = ['primaryColor', 'headline', 'subHeadline', 'propertyPrice',
+                       'showLogo', 'inheritFonts', 'propertyZip'];
+        }
 
-        $post['network'] = get_site_option('hur_snippets_network_settings', []);
+        foreach ($fields as $field){
+            $post[$field] = strip_tags(stripslashes_deep($_POST[$field] ?? ''));
+        }
+        $fields = array_keys($post);
+
+        $errors = $this->validate($post, $fields);
 
         if (empty($errors)) {
             update_option($this->optionKey, Helper::removeEmpty($post));
@@ -48,7 +57,10 @@ class SiteSettingsController extends AbstractController
                 [
                     'success' => true,
                 ],
-                $post
+                $post,
+                [
+                    'network' => $networkSettings
+                ]
             ));
             return;
         }
@@ -57,29 +69,45 @@ class SiteSettingsController extends AbstractController
             [
                 'errors' => $errors,
             ],
-            $post
+            $post,
+            [
+                'network' => $networkSettings
+            ]
         ));
     }
 
-    protected function validate($data)
+    protected function validate(array $data, array $fields)
     {
         $errors = [];
 
-        if (array_key_exists('snippetType', $data) &&
+        if (in_array('snippetType', $fields, true) &&
             !in_array($data['snippetType'], Helper::snippetTypes(), true)
         ) {
                 $errors['snippetType'] = __('Snippet Type is unknown.', 'hur-snippets');
         }
 
-        if (array_key_exists('primaryColor', $data) && !$this->isColor($data['primaryColor'])) {
+        if (in_array('primaryColor', $fields, true) && $data['primaryColor'] !== '' &&
+            !$this->isColor($data['primaryColor'])) {
             $errors['primaryColor'] = __('Primary color is not a valid color.', 'hur-snippets');
         }
-
-        if (array_key_exists('secondaryColor', $data) && !$this->isColor($data['secondaryColor'])) {
-            $errors['secondaryColor'] = __('Secondary color is not a valid color.', 'hur-snippets');
+        if (in_array('propertyPrice', $fields, true) && $data['propertyPrice'] !== '' &&
+            Helper::floatFromString($data['propertyPrice']) < 1) {
+            $errors['propertyPrice'] = __('The given price could not be parsed into a float number.', 'hur-snippets');
+        }
+        if (in_array('propertyZip', $fields, true) && $data['propertyZip'] !== '' &&
+            !Helper::isZip($data['propertyZip'])) {
+            $errors['propertyZip'] = __('This zip code looks invalid.', 'hur-snippets');
         }
 
-        if (array_key_exists('configuration', $data) && !$this->isJson($data['configuration'])) {
+        if (in_array('showLogo', $fields, true) && !in_array($data['showLogo'], ['1', '0'], true)) {
+            $errors['showLogo'] = __('Invalid boolean value', 'hur-snippets');
+        }
+        if (in_array('inheritFonts', $fields, true) && !in_array($data['inheritFonts'], ['1', '0'], true)) {
+            $errors['inheritFonts'] = __('Invalid boolean value', 'hur-snippets');
+        }
+
+        if (in_array('configuration', $fields, true) && $data['configuration'] !== '' &&
+            !$this->isJson($data['configuration'])) {
             $errors['configuration'] = __('Configuration is not a valid JSON.', 'hur-snippets');
         }
 

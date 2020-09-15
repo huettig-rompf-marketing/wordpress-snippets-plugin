@@ -2,33 +2,139 @@
 
 namespace HuR\Snippets\Shortcodes;
 
-class SnippetShortcode
+use HuR\Snippets\Helper;
+use function GuzzleHttp\Psr7\str;
+
+class SnippetShortcode implements ShortCodeInterface
 {
-    protected static $javascriptWasIncluded = false;
-    public function __invoke($atts, $content)
+    /**
+     * True if the javascript was already injected into the page
+     * @var bool
+     */
+    protected $javascriptWasIncluded = false;
+
+    /**
+     * Holds the site settings after they have been generated in getSiteSettings()
+     * @var array
+     */
+    protected $siteSettings;
+
+    public function render(?array $attr, string $content): string
     {
-        $networkSettings = get_site_option('hur_snippets_network_settings', []);
-        $siteSettings = get_option('hur_snippets_settings', []);
+        $snippetSettings = $this->mergeRecursive(
+            $this->buildDynamicSnippetConfiguration($this->getSiteSettings(), $attr ?? []),
+            @json_decode($content, true) ?? []
+        );
 
-        $siteSettings['configuration'] = json_decode($siteSettings['configuration'] ?? '[]', true) ?? [];
-        $settings = $this->mergeRecursive($networkSettings, $siteSettings);
+        return $this->buildScriptTagIfRequired() .
+               '<div class="alignwide">' .
+               '<script type="application/json" data-huettig-und-rompf-snippet>' .
+               json_encode($snippetSettings) .
+               '</script>' .
+               '</div>';
+    }
 
-        $snippetSettings = $this->mergeRecursive($siteSettings['configuration'], @json_decode($content, true) ?? []);
-
-        $result = '';
-        if(!static::$javascriptWasIncluded){
-            static::$javascriptWasIncluded = true;
-            $url = !empty($settings['proxyUrl']) ? rtrim($settings['proxyUrl'], '/') : 'https://webhub.huettig-rompf.de';
-            $result.= '<script type="text/javascript" src="' . $url . '/js/snippet"></script>';
+    /**
+     * Returns the combined settings based on the network and the site configuration
+     * NOTE: The site configuration wins over the network configuration
+     * @return array
+     */
+    protected function getSiteSettings(): array{
+        if(isset($this->siteSettings)) {
+            return $this->siteSettings;
         }
 
-        $result .= '<div class="alignwide">' .
-                       '<script type="application/json" data-huettig-und-rompf-snippet>' .
-                            json_encode($snippetSettings) .
-                       '</script>' .
-                   '</div>';
+        $networkSettings = get_site_option('hur_snippets_network_settings', []);
+        $siteSettings = get_option('hur_snippets_settings', []);
+        $siteSettings['configuration'] = json_decode($siteSettings['configuration'] ?? '[]', true) ?? [];
 
-        return $result;
+        return $this->siteSettings = $this->mergeRecursive($networkSettings, $siteSettings);
+    }
+
+    /**
+     * Builds the javascript include tag if the js was not already loaded on the page
+     * @return string|null
+     */
+    protected function buildScriptTagIfRequired(): ?string{
+        if($this->javascriptWasIncluded) {
+            return null;
+        }
+
+        $this->javascriptWasIncluded = true;
+        $url = $this->getJsUrl();
+
+        return '<script type="text/javascript" src="' . $url . '/js/snippet"></script>';
+    }
+
+    /**
+     * Finds the javascript url to load the snippet source from
+     * @return string
+     */
+    protected function getJsUrl(): string{
+        $settings = $this->getSiteSettings();
+
+        return !empty($settings['proxyUrl']) ?
+            rtrim($settings['proxyUrl'], '/') : 'https://webhub.huettig-rompf.de';
+    }
+
+    /**
+     * Generates the snippet configuration JSOn based on the merged plugin configuration
+     * @param   array  $siteSettings The merged site and network settings
+     *
+     * @return array
+     */
+    protected function buildDynamicSnippetConfiguration(array $siteSettings, array $attr): array{
+        $config = [];
+
+        if(isset($siteSettings['primaryColor'])){
+            $config['style']['loaderColor'] = $siteSettings['primaryColor'];
+            $config['formPreset']['primaryColor'] = $siteSettings['primaryColor'];
+        }
+
+        if(isset($siteSettings['headline'])){
+            $config['formPreset']['headline'] = $siteSettings['headline'];
+        }
+
+        if(isset($siteSettings['subHeadline'])){
+            $config['formPreset']['subHeadline'] = $siteSettings['subHeadline'];
+        }
+
+        if(isset($siteSettings['propertyPrice'])){
+            $config['calculatorPreset']['propertyPrice'] = Helper::floatFromString($siteSettings['propertyPrice']);
+        }
+        if(isset($attr['property-price'])){
+            $price = Helper::floatFromString($siteSettings['propertyPrice']);
+            if($price > 1) {
+                $config['calculatorPreset']['propertyPrice'] = $price;
+            }
+        }
+
+        if(isset($siteSettings['propertyZip'])){
+            $config['calculatorPreset']['zip'] = $siteSettings['propertyZip'];
+        }
+        if(isset($attr['property-zip']) && Helper::isZip((string)$attr['property-zip'])){
+            $config['calculatorPreset']['zip'] = $attr['property-zip'];
+        }
+
+        if($siteSettings['showLogo'] === '0'){
+            $config['formPreset']['showLogo'] = false;
+        }
+        if($siteSettings['inheritFonts'] === '1'){
+            $config['formPreset']['inheritFonts'] = true;
+        }
+
+        if($siteSettings['snippetType'] !== '@custom'){
+            $config['snippetType'] = $siteSettings['snippetType'];
+        }
+
+        $config = $this->mergeRecursive($config, $siteSettings['configuration']);
+
+        // Fall back if no snippet type is present -> This should prevent some nasty issues
+        if(empty($config['snippetType'])) {
+            $config['snippetType'] = 'calcAnnuityWhiteLabel';
+        }
+
+        return $config;
     }
 
     /**

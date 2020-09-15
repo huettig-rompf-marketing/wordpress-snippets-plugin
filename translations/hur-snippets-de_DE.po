@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-09-11 07:56+0200\n"
-"PO-Revision-Date: 2020-09-11 07:56+0200\n"
+"POT-Creation-Date: 2020-09-15 08:07+0200\n"
+"PO-Revision-Date: 2020-09-15 08:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -16,87 +16,195 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
 
-#: src/Admin/Admin.php:43 src/Admin/Admin.php:44 src/Admin/Admin.php:55
-#: src/Admin/Admin.php:56
+#: src/Admin/Admin.php:43 src/Admin/Admin.php:44
+msgid "Hütting & Rompf Snippets"
+msgstr "Hütting & Rompf Snippets"
+
+#: src/Admin/Admin.php:55 src/Admin/Admin.php:56
 msgid "Hütting & Rompf Snippet Settings"
 msgstr "Hüttig & Rompf Snippet Einstellungen"
 
 #: src/Admin/Controllers/NetworkSettingsController.php:58
-#: src/Admin/Controllers/SiteSettingsController.php:85
+#: src/Admin/Controllers/SiteSettingsController.php:115
 msgid "Proxy must be a valid URL."
 msgstr "Die Proxy URL is keine valide URL."
 
-#: src/Admin/Controllers/SiteSettingsController.php:69
+#: src/Admin/Controllers/SiteSettingsController.php:86
 msgid "Snippet Type is unknown."
 msgstr "Der Snippet Typ ist unbekannt."
 
-#: src/Admin/Controllers/SiteSettingsController.php:73
+#: src/Admin/Controllers/SiteSettingsController.php:91
 msgid "Primary color is not a valid color."
 msgstr "Die Primärfarbe ist keine valide Farbe."
 
-#: src/Admin/Controllers/SiteSettingsController.php:77
-msgid "Secondary color is not a valid color."
-msgstr "Die Sekundärfarbe ist keine valide Farbe."
+#: src/Admin/Controllers/SiteSettingsController.php:95
+msgid "The given price could not be parsed into a float number."
+msgstr ""
+"Der angegebene Preis konnte nicht in eine Fließkomma Zahl umgewandelt "
+"werden."
 
-#: src/Admin/Controllers/SiteSettingsController.php:81
+#: src/Admin/Controllers/SiteSettingsController.php:99
+msgid "This zip code looks invalid."
+msgstr "Diese Postleitzahl scheint ungültig zu sein."
+
+#: src/Admin/Controllers/SiteSettingsController.php:103
+#: src/Admin/Controllers/SiteSettingsController.php:106
+msgid "Invalid boolean value"
+msgstr "Ungültiger, boolscher Wert"
+
+#: src/Admin/Controllers/SiteSettingsController.php:111
 msgid "Configuration is not a valid JSON."
 msgstr "Die Konfiguration enthält kein valides JSON."
 
 #: src/Helper.php:10
+msgid "Annuity calculator"
+msgstr "Annuitätenrechner"
+
+#: src/Helper.php:11
 msgid "Credit calculator"
 msgstr "Kreditrechner"
 
-#: src/Helper.php:11
+#: src/Helper.php:12
 msgid "Variant S"
 msgstr "Variante S"
 
-#: src/Helper.php:12
+#: src/Helper.php:13
 msgid "Variant M"
 msgstr "Variante M"
 
-#: src/Helper.php:13
+#: src/Helper.php:14
 msgid "Variant L"
 msgstr "Variante L"
 
-#: src/Helper.php:14
-msgid "Construction financing FAQ"
-msgstr "Baufinanzierung-FAQ"
+#: src/Helper.php:15
+msgid "Custom configuration"
+msgstr "Eigene Konfiguration"
 
-#: templates/network-settings.php:2 templates/site-settings.php:2
+#: templates/network-settings.php:2 templates/site-settings.php:3
 msgid "Hüttig & Rompf Snippets - Settings"
 msgstr "Hüttig & Rompf Snippets - Einstellungen"
 
-#: templates/network-settings.php:5 templates/site-settings.php:40
+#: templates/network-settings.php:5 templates/site-settings.php:88
 msgid "Proxy URL"
 msgstr "Proxy URL"
 
-#: templates/network-settings.php:12 templates/site-settings.php:48
+#: templates/network-settings.php:5 templates/site-settings.php:88
+msgid ""
+"Optional proxy to enhance your user's privacy. Has to be installed on your "
+"server, tho."
+msgstr ""
+"Erlaubt, bei Bedarf ein zusätzliches Proxy-Script zu installieren. Damit "
+"werden alle Anfragen an Hüttig & Rompf über Ihren Server geleitet."
+
+#: templates/network-settings.php:6 templates/site-settings.php:89
+msgid "Find the source on GitHub"
+msgstr "Die Sourcen auf GitHub ansehen"
+
+#: templates/network-settings.php:13 templates/site-settings.php:98
 msgid "Save"
 msgstr "Speichern"
 
-#: templates/site-settings.php:3
-msgid "Change your default settings for the Hütting & Rompf Marketing Snippets."
-msgstr "Ändere die Standardeinstellungen für die Hüttig & Rompf Marketing Snippets."
+#: templates/site-settings.php:4
+msgid ""
+"These are the default settings for the snippets you place on your site. To "
+"show a snippet you can simply add the <code>[hur_snippet]</code> short-code "
+"somewhere in your content. All settings you take here can be adjusted using "
+"the json definition in the short code. If you have a special reqest or need "
+"help, <a href=\"mailto:marketing@huettig-rompf.de\">feel free to contact us "
+"directly</a>."
+msgstr ""
+"Die Standard-Einstellungen für alle Snippets die Sie auf Ihrer Seite "
+"platzieren. Um ein Snippet anzuzeigen, fügen Sie einfach den "
+"<code>[hur_snippet]</code> Short-Code in ihrem Content ein. Alle "
+"Einstellungen, die Sie hier vornehmen können sie über die JSON Definition "
+"im Short-Code überschreiben. Wenn Sie einen besonderen Wunsch haben, oder "
+"Hilfe benötigen sollten, <a href=\"mailto:marketing@huettig-rompf.de"
+"\">kontaktieren Sie uns gerne direkt</a>."
 
-#: templates/site-settings.php:6
+#: templates/site-settings.php:7
 msgid "Snippet Type"
 msgstr "Snippet Typ"
 
-#: templates/site-settings.php:17
+#: templates/site-settings.php:19
 msgid "Primary Color"
 msgstr "Primärfarbe"
 
-#: templates/site-settings.php:24
-msgid "Secondary Color"
-msgstr "Sekundärfarbe"
+#: templates/site-settings.php:27
+msgid "Headline override"
+msgstr "Überschrift ersetzen"
 
-#: templates/site-settings.php:31
-msgid "Customize Configuration"
-msgstr "Eigene Konfiguration"
+#: templates/site-settings.php:28
+msgid "Default: What does this real estate cost..."
+msgstr "Standard: Was kostet Sie diese Immobilie..."
 
-#: templates/site-settings.php:37
-msgid "Advanced"
-msgstr "Erweitert"
+#: templates/site-settings.php:35
+msgid "Sub-Headline override"
+msgstr "Unter-Überschrift ersetzen"
 
-#~ msgid "Hütting & Rompf Snippets"
-#~ msgstr "Hütting & Rompf Snippets"
+#: templates/site-settings.php:36
+msgid "Default: A service of..."
+msgstr "Standard: Ein Service des..."
+
+#: templates/site-settings.php:43
+msgid "Static property price"
+msgstr "Statischen Immobilien Preis festlegen"
+
+#: templates/site-settings.php:44
+msgid "Default: The user can adjust the price"
+msgstr "Standard: Der Benutzer kann den Preis selbst setzen"
+
+#: templates/site-settings.php:45 templates/site-settings.php:54
+#, php-format
+msgid "You can also set this in your short code like so: %s"
+msgstr "Sie können diesen Wert auch im Short-Code anpassen: %s"
+
+#: templates/site-settings.php:52
+msgid "Property location zip"
+msgstr "PLZ der Immobilie"
+
+#: templates/site-settings.php:52
+msgid ""
+"Can be used to define the location for the property, so we can calculate "
+"with the correct tax rates."
+msgstr ""
+"Bestimmen Sie den Ort ihrer Immobilien, damit wir die Korrekte "
+"Grunderwerbssteuer verwenden können."
+
+#: templates/site-settings.php:61
+msgid "Show the Hüttig & Rompf logo"
+msgstr "Zeige das Hüttig & Rompf Logo"
+
+#: templates/site-settings.php:63 templates/site-settings.php:72
+msgid "Yes"
+msgstr "Ja"
+
+#: templates/site-settings.php:64 templates/site-settings.php:71
+msgid "No"
+msgstr "Nein"
+
+#: templates/site-settings.php:69
+msgid "Inherit website fonts"
+msgstr "Schriften von Webseite übernehmen"
+
+#: templates/site-settings.php:77
+msgid "Advanced Configuration"
+msgstr "Erweiterte Konfiguration"
+
+#: templates/site-settings.php:80
+msgid "JSON Configuration"
+msgstr "JSON Konfiguration"
+
+#~ msgid "Secondary color is not a valid color."
+#~ msgstr "Die Sekundärfarbe ist keine valide Farbe."
+
+#~ msgid "Construction financing FAQ"
+#~ msgstr "Baufinanzierung-FAQ"
+
+#~ msgid ""
+#~ "Change your default settings for the Hütting & Rompf Marketing Snippets."
+#~ msgstr ""
+#~ "Ändere die Standardeinstellungen für die Hüttig & Rompf Marketing "
+#~ "Snippets."
+
+#~ msgid "Secondary Color"
+#~ msgstr "Sekundärfarbe"

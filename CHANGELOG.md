@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/compare/v1.2.1...v1.3.0) (2021-01-13)
+
+
+### Features
+
+* implement "HUR_WEBHUB_PROXY_URL" config constant ([5d9ad07](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/commit/5d9ad07a78d3e2936acb692801be02e7d7780ef1))
+
 ### [1.2.1](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/compare/v1.2.0...v1.2.1) (2020-09-15)
 
 

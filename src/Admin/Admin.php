@@ -50,13 +50,17 @@ class Admin
 
     public function registerNetworkSettingsController()
     {
-        add_submenu_page(
-            'settings.php',
-            __('Hütting & Rompf Snippet Settings', 'hur-snippets'),
-            __('Hütting & Rompf Snippet Settings', 'hur-snippets'),
-            'manage_options',
-            'huetting-rompf-snippet-settings',
-            new NetworkSettingsController()
-        );
+        // We only need the network option if we dont have a fixed proxy url
+        // @todo this might has to be changed when we add additional network options later
+        if(!defined('HUR_WEBHUB_PROXY_URL')){
+            add_submenu_page(
+                'settings.php',
+                __('Hütting & Rompf Snippet Settings', 'hur-snippets'),
+                __('Hütting & Rompf Snippet Settings', 'hur-snippets'),
+                'manage_options',
+                'huetting-rompf-snippet-settings',
+                new NetworkSettingsController()
+            );
+        }
     }
 }

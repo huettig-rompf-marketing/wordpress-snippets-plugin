@@ -84,6 +84,7 @@
                 <?php endif; ?>
             </div>
 
+            <?php if(!defined('HUR_WEBHUB_PROXY_URL')): ?>
             <div class="hur_form-group">
                 <label><?= __('Proxy URL', 'hur-snippets') ?> <small>(<?= __('Optional proxy to enhance your user\'s privacy. Has to be installed on your server, tho.', 'hur-snippets') ?>
                         <a href="https://github.com/huettig-rompf-marketing/webhub-proxy" target="_blank" rel="noopener"><?= __('Find the source on GitHub', 'hur-snippets') ?></a>)</small></label>
@@ -92,6 +93,7 @@
                     <span class="hur_form-error"><?= $data['errors']['proxyUrl'] ?></span>
                 <?php endif; ?>
             </div>
+            <?php endif; ?>
         </div>
 
         <div class="hur_form-group">

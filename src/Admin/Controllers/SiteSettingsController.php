@@ -111,7 +111,7 @@ class SiteSettingsController extends AbstractController
             $errors['configuration'] = __('Configuration is not a valid JSON.', 'hur-snippets');
         }
 
-        if (array_key_exists('proxyUrl', $data) && !$this->isURL($data['proxyUrl'])) {
+        if (!defined('HUR_WEBHUB_PROXY_URL') && array_key_exists('proxyUrl', $data) && !$this->isURL($data['proxyUrl'])) {
             $errors['proxyUrl'] = __('Proxy must be a valid URL.', 'hur-snippets');
         }
 

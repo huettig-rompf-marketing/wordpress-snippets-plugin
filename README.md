@@ -28,6 +28,18 @@ the defaults you can provide custom JSON inside the content: `[hur-snippet]{"cal
 This will overwrite the `property zip` set inside your snippet settings.
 You can do that as well using an attribute: `[hur-snippet property-zip="60503"]`, however the JSON configuration always takes precedence.
 
+### Programmatic configuration
+
+The plugin provides some programmatic configuration options:
+
+#### HUR_WEBHUB_PROXY_URL
+
+You can define this constant in your wp-config.php to set the url for the webhub proxy that will be forced
+on all sites inside your network. By setting this option all input options for the proxy url in the backend will be disabled.
+
+e.g: ```define('HUR_WEBHUB_PROXY_URL', 'https://example.org/webhub-proxy/');```
+
+
 ## Installation
 
 You can install this plugin in two ways:

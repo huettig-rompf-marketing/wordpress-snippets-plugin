@@ -71,10 +71,20 @@ class SnippetShortcode implements ShortCodeInterface
      * @return string
      */
     protected function getJsUrl(): string{
-        $settings = $this->getSiteSettings();
+        $trimmer = function(string $url): string {
+            return rtrim(trim($url, '/ '));
+        };
 
-        return !empty($settings['proxyUrl']) ?
-            rtrim($settings['proxyUrl'], '/') : 'https://webhub.huettig-rompf.de';
+        if(defined('HUR_WEBHUB_PROXY_URL')){
+            return $trimmer(HUR_WEBHUB_PROXY_URL);
+        }
+
+        $settings = $this->getSiteSettings();
+        if(!empty($settings['proxyUrl'])){
+            return $trimmer($settings['proxyUrl']);
+        }
+
+        return 'https://webhub.huettig-rompf.de';
     }
 
     /**

@@ -78,7 +78,6 @@ class SnippetShortcode implements ShortCodeInterface
         if(defined('HUR_WEBHUB_PROXY_URL')){
             return $trimmer(HUR_WEBHUB_PROXY_URL);
         }
-
         $settings = $this->getSiteSettings();
         if(!empty($settings['proxyUrl'])){
             return $trimmer($settings['proxyUrl']);
@@ -95,42 +94,45 @@ class SnippetShortcode implements ShortCodeInterface
      */
     protected function buildDynamicSnippetConfiguration(array $siteSettings, array $attr): array{
         $config = [];
-
-        if(isset($siteSettings['primaryColor'])){
-            $config['style']['loaderColor'] = $siteSettings['primaryColor'];
-            $config['formPreset']['primaryColor'] = $siteSettings['primaryColor'];
-        }
-
-        if(isset($siteSettings['headline'])){
-            $config['formPreset']['headline'] = $siteSettings['headline'];
-        }
-
-        if(isset($siteSettings['subHeadline'])){
-            $config['formPreset']['subHeadline'] = $siteSettings['subHeadline'];
-        }
-
-        if(isset($siteSettings['propertyPrice'])){
-            $config['calculatorPreset']['propertyPrice'] = Helper::floatFromString($siteSettings['propertyPrice']);
-        }
-        if(isset($attr['property-price'])){
-            $price = Helper::floatFromString($siteSettings['propertyPrice']);
-            if($price > 1) {
-                $config['calculatorPreset']['propertyPrice'] = $price;
+        
+        if($siteSettings['snippetType'] === 'calcAnnuityWhiteLabel') {
+            if (isset($siteSettings['primaryColor'])) {
+                $config['style']['loaderColor']       = $siteSettings['primaryColor'];
+                $config['formPreset']['primaryColor'] = $siteSettings['primaryColor'];
             }
-        }
 
-        if(isset($siteSettings['propertyZip'])){
-            $config['calculatorPreset']['zip'] = $siteSettings['propertyZip'];
-        }
-        if(isset($attr['property-zip']) && Helper::isZip((string)$attr['property-zip'])){
-            $config['calculatorPreset']['zip'] = $attr['property-zip'];
-        }
+            if (isset($siteSettings['headline'])) {
+                $config['formPreset']['headline'] = $siteSettings['headline'];
+            }
 
-        if($siteSettings['showLogo'] === '0'){
-            $config['formPreset']['showLogo'] = false;
-        }
-        if($siteSettings['inheritFonts'] === '1'){
-            $config['formPreset']['inheritFonts'] = true;
+            if (isset($siteSettings['subHeadline'])) {
+                $config['formPreset']['subHeadline'] = $siteSettings['subHeadline'];
+            }
+
+            if (isset($siteSettings['propertyPrice'])) {
+                $config['calculatorPreset']['propertyPrice'] = Helper::floatFromString($siteSettings['propertyPrice']);
+            }
+
+            if (isset($attr['property-price'])) {
+                $price = Helper::floatFromString($attr['property-price']);
+                if ($price > 1) {
+                    $config['calculatorPreset']['propertyPrice'] = $price;
+                }
+            }
+
+            if (isset($siteSettings['propertyZip'])) {
+                $config['calculatorPreset']['zip'] = $siteSettings['propertyZip'];
+            }
+            if (isset($attr['property-zip']) && Helper::isZip((string)$attr['property-zip'])) {
+                $config['calculatorPreset']['zip'] = $attr['property-zip'];
+            }
+
+            if(isset($siteSettings['showLogo']) && $siteSettings['showLogo'] === '0'){
+                $config['formPreset']['showLogo'] = false;
+            }
+            if(isset($siteSettings['inheritFonts']) && $siteSettings['inheritFonts'] === '1'){
+                $config['formPreset']['inheritFonts'] = true;
+            }
         }
 
         if($siteSettings['snippetType'] !== '@custom'){

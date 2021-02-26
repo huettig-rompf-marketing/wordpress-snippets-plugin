@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/compare/v1.3.0...v1.3.1) (2021-02-26)
+
+
+### Bug Fixes
+
+* keep settings after switching snippet type ([9235a04](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/commit/9235a044d0fe71f31c424e50cb3ccd3d21f29325))
+* set right attr ([8443bb7](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/commit/8443bb73241464457f5f69815a92561e14189008))
+
 ## [1.3.0](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/compare/v1.2.1...v1.3.0) (2021-01-13)
 
 

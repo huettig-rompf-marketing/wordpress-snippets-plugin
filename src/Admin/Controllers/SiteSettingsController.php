@@ -37,11 +37,8 @@ class SiteSettingsController extends AbstractController
             'configuration' => $_POST['configuration'] ?? null
         ];
 
-        $fields = [];
-        if ($post['snippetType'] === 'calcAnnuityWhiteLabel') {
-            $fields = ['primaryColor', 'headline', 'subHeadline', 'propertyPrice',
-                       'showLogo', 'inheritFonts', 'propertyZip'];
-        }
+        $fields = ['primaryColor', 'headline', 'subHeadline', 'propertyPrice',
+                   'showLogo', 'inheritFonts', 'propertyZip'];
 
         foreach ($fields as $field){
             $post[$field] = strip_tags(stripslashes_deep($_POST[$field] ?? ''));

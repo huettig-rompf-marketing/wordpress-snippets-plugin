@@ -4,7 +4,7 @@
  * Text Domain: hur-snippets
  * Domain Path: /translations
  * Description: This plugin helps you settings up customized Hüttig & Rompf Marketing Snippets.
- * Version: 1.3.1
+ * Version: 1.3.2
  * Requires at least: 5.4
  * Requires PHP: 7.2
  * Author: Hüttig & Rompf

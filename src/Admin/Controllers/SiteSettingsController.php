@@ -33,12 +33,11 @@ class SiteSettingsController extends AbstractController
 
         $post = [
             'snippetType' => $_POST['snippetType'] ?? null,
-            'proxyUrl' => $_POST['proxyUrl'] ?? null,
-            'configuration' => $_POST['configuration'] ?? null
+            'proxyUrl' => $_POST['proxyUrl'] ?? null
         ];
 
         $fields = ['primaryColor', 'headline', 'subHeadline', 'propertyPrice',
-                   'showLogo', 'inheritFonts', 'propertyZip'];
+                   'showLogo', 'inheritFonts', 'propertyZip', 'configuration'];
 
         foreach ($fields as $field){
             $post[$field] = strip_tags(stripslashes_deep($_POST[$field] ?? ''));

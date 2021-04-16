@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.4](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/compare/v1.3.3...v1.3.4) (2021-04-16)
+
+
+### Bug Fixes
+
+* **NetworkSettings:** allow empty proxy url ([cd120aa](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/commit/cd120aa6862b6d1d7240c4b0be445a9cb10dd5a1))
+* **SiteSettings:** remove slashes in configuration ([bc44138](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/commit/bc44138116929b2c635fbbee7d2caa77f5d536ff))
+
 ### [1.3.3](https://github.com/huettig-rompf-marketing/wordpress-snippets-plugin/compare/v1.3.2...v1.3.3) (2021-04-16)
 
 

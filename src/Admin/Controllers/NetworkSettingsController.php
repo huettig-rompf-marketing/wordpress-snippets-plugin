@@ -54,7 +54,7 @@ class NetworkSettingsController extends AbstractController
     {
         $errors = [];
 
-        if (array_key_exists('proxyUrl', $data) && !$this->isURL($data['proxyUrl'])) {
+        if (!empty($data['proxyUrl']) && !$this->isURL($data['proxyUrl'])) {
             $errors['proxyUrl'] = __('Proxy must be a valid URL.', 'hur-snippets');
         }
 

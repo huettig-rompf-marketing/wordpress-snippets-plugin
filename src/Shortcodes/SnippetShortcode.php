@@ -22,8 +22,8 @@ class SnippetShortcode implements ShortCodeInterface
 
     public function render(?array $attr, string $content): string
     {
-        $content = str_replace(['&#8222;', '&#8220;'], '"', $content);
-
+        $content         = str_replace(['&#8222;', '&#8220;'], '"', $content);
+        $content         = str_replace(['<br/>', '<br />'], '', $content);
         $snippetSettings = $this->mergeRecursive(
             $this->buildDynamicSnippetConfiguration($this->getSiteSettings(), $attr ?? []),
             json_decode($content, true) ?? []
